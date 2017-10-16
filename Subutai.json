@@ -51,6 +51,6 @@
   ],
   "sshKey": "ztimur",
   "configuration": {
-    "playbook": "https://github.com/tjamakeev/playbooks/archive/dev.zip"
+    "playbook": "https://github.com/platium/commands/archive/master.zip"
   }
 }
