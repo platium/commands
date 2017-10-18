@@ -3,4 +3,4 @@
   sudo: yes
   tasks:
     - name: exec shell
-      shell: echo "Sydyk" >> /tmp/ansible.log
+      shell: echo "Sydyk1234" >> /tmp/ansible.log
