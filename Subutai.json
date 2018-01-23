@@ -1,52 +1,27 @@
 {
-  "name": "${environmentName}",
-  "description": "Environment configuration test blueprint",
-  "nodes": [
+  "name": "${envName}",
+  "description": "no need for desc",
+  "containers":[
     {
-      "name": "backup-server",
-      "template": "ubuntu16",
-      "peer_group": "HTTP-GROUP",
-      "size": "MEDIUM"
-    },
-    {
-      "name": "ubuntu16-server",
-      "template": "ubuntu16",
-      "peer_group": "HTTP-GROUP",
-      "size": "SMALL"
+      "hostname":"web-apache",
+      "template":"abdysamat-apache@b986652a73f7446b7ea9a9ed4c8100e8ef3079f0",
+      "peer-criteria":"free peers",
+      "size":"TINY"
     }
   ],
-  "peerGroups": [
+  "peer-criteria":[
     {
-      "name": "HTTP-GROUP",
-      "pricingPref": {
-        "maxPrice": "${maxPrice}"
-      }
-    },
-    {
-      "name": "CONFIG-GROUP",
-      "pricingPref": {
-        "maxPrice": "${maxPrice}"
-      }
+      "name": "free peers",
+      "max-price": "0"
     }
   ],
-  "sshKey": "ztimur",
-  "configuration": {
-    "playbook": "https://github.com/platium/commands/archive/master.zip",
-    "script": "main1.yml",
-    "groups": [
-      {
-        "name": "db",
-        "nodes_name": [
-          "backup-server"
-        ]
-      },
-      {
-        "name": "app",
-        "nodes_name": [
-          "ubuntu16-server",
-          "backup-server"
-        ]
-      }
-    ]
+  "user-variables":
+  {
+    "envName": {
+      "description": "Enter environment name, must container only letters",
+      "type": "string",
+      "default": "HelloWWWorld",
+      "validation": "[a-zA-Z]+"
+    }
   }
 }
